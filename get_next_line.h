@@ -2,12 +2,21 @@
 # define GET_NEXT_LINE_H
 
 # define BUFF_SIZE 32
+# include <stdio.h>
+# include <unistd.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+# include <string.h>
 
 int	get_next_line(const int fd, char **s);
 
-struct	s_type {
+typedef struct	s_list
+{
+	int	fd;
 	void	*content;
-	int	size;
-}	t_point;
+	size_t	size;
+	struct s_list	*next;
+}		t_list;
 
 #endif
