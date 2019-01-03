@@ -1,9 +1,10 @@
 #include "get_next_line.h"
 
-int	get_next_line(int fd, char **s)
+int	get_next_line(const int fd, char **s)
 {
 	static char ret[BUFF_SIZE + 1];
 	read(fd, ret, BUFF_SIZE);
+	return (0);
 }
 
 int	main()
