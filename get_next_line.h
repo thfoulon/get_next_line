@@ -8,6 +8,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <string.h>
+# include <stdlib.h>
 
 int	get_next_line(const int fd, char **s);
 

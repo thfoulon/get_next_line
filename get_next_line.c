@@ -2,10 +2,24 @@
 
 int	get_next_line(const int fd, char **s)
 {
-	
+	char buf[BUFF_SIZE + 1];
+	static char *str;
+	int	ret;
+	while (ft_check(str) == 0 && )
+	{
+		if (*buf)
+		{
+			str = ft_strdup(ft_strcat(str, buf));
+		}
+		ret = read(fd, buf, BUFF_SIZE);
+	}
+	return (1);
 }
 
 int	main(int ac, char **av)
 {
+	char *line;
+	
+	get_next_line(fd, &line);
 	return (0);
 }
