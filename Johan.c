@@ -1,4 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Johan.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thfoulon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/01/19 10:07:37 by thfoulon          #+#    #+#             */
+/*   Updated: 2019/01/19 10:07:40 by thfoulon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
+
+void name(char *s)
+{
+
+}
 
 void	ft_memdel(void **ap)
 {
@@ -19,7 +36,7 @@ int ft_check(char *str)
   return (0);
 }
 
-char *ft_strappend(char *s1, char *s2)
+void ft_strappend(char *s1, char *s2)
 {
   char *new;
   int i = 0;
@@ -42,34 +59,28 @@ char *ft_strappend(char *s1, char *s2)
     i++;
     j++;
   }
-  new[i] = '\0';
-  return(new);
+	s1 = (char*)malloc(sizeof(*s1) * strlen(new) + 1);
+	s1[i] = '\0';
 }
 
 int get_next_line(int fd, char **s)
 {
   int nb_lues = 1;
   int retour = 0;
-  static char buff[BUFF_SIZE + 1];
-  static char *str;
+  char buff[BUFF_SIZE + 1];
   static char *new = NULL;
-  printf("debut boucle\n");
   while (nb_lues > 0)
   {
     nb_lues = read(fd, buff, BUFF_SIZE);
-    printf("fin read\n");
-    str = ft_strappend(new, buff);
-    printf("strappend\n");
-    if (new)
-			free(new);
-    printf("memdel");
-    new = (char*)malloc(sizeof(str) * strlen(str));
-    printf("malloc\n");
-    new = str;
-    if (ft_check(new) == 1)
+    if (ft_check(buff) == 1)
       break;
+		else if (new)
+				ft_strappend(new, buff);
+		else
+			new = ft_strdup(buff);
   }
-  printf("fin boucle\n");
+	if (ft_check(new) == 1)
+		ft_coupcoup(new);
   s = &new;
   if (nb_lues < BUFF_SIZE)
     return (0);
