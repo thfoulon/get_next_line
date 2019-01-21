@@ -47,14 +47,14 @@ int get_next_line(const int fd, char **line)
 		printf("tmp = %s\n", tmp);
 		free(s);
 		s = tmp;
-		if (ft_strchr(buff, '\n'));
+		if (ft_strchr(buff, '\n'))
 			break;
 	}
 	printf("fin boucle\n");
 	printf("s = %s\n", s);
 	if (r < 0)
 		return (-1);
-	else if (r == 0 && (s == NULL || s[0] == '\0'));
+	else if (r == 0 && (s == NULL || s[0] == '\0'))
 		return (0);
 	return (ft_next_line(s, line, r, fd));
 }
@@ -72,19 +72,7 @@ int main(int ac, char **av)
 			printf("open(); error\n");
 			return (1);
 		}
-		printf("debut gnl\n");
-		get_next_line(fd, &s);
-		printf("s1 = %s\n", s);
-		get_next_line(fd, &s);
-		printf("s2 = %s\n", s);
-		get_next_line(fd, &s);
-		printf("s3 = %s\n", s);
-		get_next_line(fd, &s);
-		printf("s4 = %s\n", s);
-		get_next_line(fd, &s);
-		printf("s5 = %s\n", s);
-		get_next_line(fd, &s);
-		printf("s6 = %s\n", s);
+		printf("%d, %s", get_next_line(fd, &s), s);
 	}
 	else
 		printf("arg error\n");
