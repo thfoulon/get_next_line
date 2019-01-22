@@ -9,8 +9,7 @@
 # include <fcntl.h>
 # include <string.h>
 # include <stdlib.h>
-
-#include "libft.h"
+# include "libft.h"
 
 char			*ft_strchr(const char *s, int c);
 void			ft_strdel(char **as);

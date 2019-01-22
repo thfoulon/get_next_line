@@ -22,6 +22,7 @@ int ft_next_line(char *s, char **line, int r, int fd)
 			return (get_next_line(fd, line));
 		*line = ft_strdup(s);
 		ft_strdel(&s);
+		return(0);
 	}
 	return (1);
 }
@@ -37,21 +38,15 @@ int get_next_line(const int fd, char **line)
 		return (-1);
 	while ((r = read(fd, buff, BUFF_SIZE)) > 0)
 	{
-		printf("debut boucle\n");
 		buff[r] = '\0';
-		printf("buff = %s\n", buff);
-		printf("s = %s\n", s);
 		if (!(s))
 			s = ft_strnew(1);
 		tmp = ft_strjoin(s, buff);
-		printf("tmp = %s\n", tmp);
 		free(s);
 		s = tmp;
 		if (ft_strchr(buff, '\n'))
 			break;
 	}
-	printf("fin boucle\n");
-	printf("s = %s\n", s);
 	if (r < 0)
 		return (-1);
 	else if (r == 0 && (s == NULL || s[0] == '\0'))
@@ -72,7 +67,7 @@ int main(int ac, char **av)
 			printf("open(); error\n");
 			return (1);
 		}
-		printf("%d, %s", get_next_line(fd, &s), s);
+		printf("%d, %s\n", get_next_line(fd, &s), s);
 	}
 	else
 		printf("arg error\n");
