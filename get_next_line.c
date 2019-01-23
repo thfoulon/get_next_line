@@ -11,7 +11,7 @@ int ft_next_line(char *s, char **line, int r, int fd)
 	{
 		*line = ft_strsub(s, 0, i);
 		tmp = ft_strdup(s + i + 1);
-		free(s);
+		ft_strdel(&s);
 		s = tmp;
 		if (s[0] == '\0')
 			ft_strdel(&s);
@@ -42,7 +42,7 @@ int get_next_line(const int fd, char **line)
 		if (!(s))
 			s = ft_strnew(1);
 		tmp = ft_strjoin(s, buff);
-		free(s);
+		ft_strdel(&s);
 		s = tmp;
 		if (ft_strchr(buff, '\n'))
 			break;
@@ -67,7 +67,17 @@ int main(int ac, char **av)
 			printf("open(); error\n");
 			return (1);
 		}
-		printf("%d, %s\n", get_next_line(fd, &s), s);
+		while ((r = get_next_line(fd, &s)) > 0)
+		{
+			ft_putnbr(r);
+			ft_putstr(" ");
+			ft_putstr(s);
+			ft_putstr("\n");
+		}
+		ft_putnbr(r);
+		ft_putstr(" ");
+		ft_putstr(s);
+		ft_putstr("\n");
 	}
 	else
 		printf("arg error\n");
