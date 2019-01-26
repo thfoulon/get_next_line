@@ -6,7 +6,7 @@
 /*   By: thfoulon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 14:26:59 by thfoulon          #+#    #+#             */
-/*   Updated: 2019/01/26 14:31:46 by thfoulon         ###   ########.fr       */
+/*   Updated: 2019/01/26 15:18:26 by thfoulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		ft_next_line(char *s, char **line, int r, int fd)
 	{
 		*line = ft_strsub(s, 0, i);
 		tmp = ft_strdup(s + i + 1);
-		ft_strdel(&s);
+		// ft_strdel(&s);
 		s = tmp;
 		if (s[0] == '\0')
 			ft_strdel(&s);
@@ -55,6 +55,7 @@ int		get_next_line(const int fd, char **line)
 		if (!(s))
 			s = ft_strnew(1);
 		tmp = ft_strjoin(s, buff);
+	//	printf("%s\n",s);
 		ft_strdel(&s);
 		s = tmp;
 		if (ft_strchr(buff, '\n'))
