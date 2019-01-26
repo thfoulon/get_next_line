@@ -6,7 +6,7 @@
 /*   By: thfoulon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 14:29:23 by thfoulon          #+#    #+#             */
-/*   Updated: 2019/01/26 14:29:36 by thfoulon         ###   ########.fr       */
+/*   Updated: 2019/01/26 14:33:22 by thfoulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <fcntl.h>
 # include <string.h>
 # include <stdlib.h>
-# include "libft.h"
+# include "libft/libft.h"
 
 int		get_next_line(const int fd, char **s);
 
