@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thfoulon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/01/26 14:29:23 by thfoulon          #+#    #+#             */
+/*   Updated: 2019/01/26 14:29:36 by thfoulon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# define BUFF_SIZE 32
+# define BUFF_SIZE 8
 # include <stdio.h>
 # include <unistd.h>
 # include <sys/types.h>
@@ -11,12 +23,6 @@
 # include <stdlib.h>
 # include "libft.h"
 
-char			*ft_strchr(const char *s, int c);
-void			ft_strdel(char **as);
-char			*ft_strdup(const char *s1);
-char			*ft_strjoin(char const *s1, char const *s2);
-char			*ft_strnew(size_t size);
-char			*ft_strsub(char const *s, unsigned int start, size_t len);
-int	get_next_line(const int fd, char **s);
+int		get_next_line(const int fd, char **s);
 
 #endif

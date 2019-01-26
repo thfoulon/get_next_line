@@ -1,9 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: thfoulon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/01/26 14:26:59 by thfoulon          #+#    #+#             */
+/*   Updated: 2019/01/26 14:31:46 by thfoulon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
-int ft_next_line(char *s, char **line, int r, int fd)
+int		ft_next_line(char *s, char **line, int r, int fd)
 {
-	char *tmp;
-	int i;
+	char	*tmp;
+	int		i;
+
 	i = 0;
 	while (s[i] != '\n' && s[i])
 		i++;
@@ -22,17 +35,17 @@ int ft_next_line(char *s, char **line, int r, int fd)
 			return (get_next_line(fd, line));
 		*line = ft_strdup(s);
 		ft_strdel(&s);
-		return(0);
+		return (0);
 	}
 	return (1);
 }
 
-int get_next_line(const int fd, char **line)
+int		get_next_line(const int fd, char **line)
 {
-	static char *s;
-	char buff[BUFF_SIZE + 1];
-	char *tmp;
-	int r;
+	static char	*s;
+	char		buff[BUFF_SIZE + 1];
+	char		*tmp;
+	int			r;
 
 	if (fd < 0 || line == NULL)
 		return (-1);
@@ -45,7 +58,7 @@ int get_next_line(const int fd, char **line)
 		ft_strdel(&s);
 		s = tmp;
 		if (ft_strchr(buff, '\n'))
-			break;
+			break ;
 	}
 	if (r < 0)
 		return (-1);
@@ -54,12 +67,12 @@ int get_next_line(const int fd, char **line)
 	return (ft_next_line(s, line, r, fd));
 }
 
-int main(int ac, char **av)
+int		main(int ac, char **av)
 {
-	int fd;
-	char *s;
-	int r;
-	int i = 0;
+	int		fd;
+	char	*s;
+	int		r;
+
 	if (ac == 2)
 	{
 		if ((fd = open(av[1], O_RDONLY)) < 0)
@@ -68,16 +81,8 @@ int main(int ac, char **av)
 			return (1);
 		}
 		while ((r = get_next_line(fd, &s)) > 0)
-		{
-			ft_putnbr(r);
-			ft_putstr(" ");
-			ft_putstr(s);
-			ft_putstr("\n");
-		}
-		ft_putnbr(r);
-		ft_putstr(" ");
-		ft_putstr(s);
-		ft_putstr("\n");
+			printf("%d, %s\n", r, s);
+		printf("%d, %s\n", r, s);
 	}
 	else
 		printf("arg error\n");
