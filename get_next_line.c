@@ -33,7 +33,6 @@ int		ft_next_line(char **s, char **line, int r, int fd)
 	{
 		if (r == BUFF_SIZE)
 			return (get_next_line(fd, line));
-		*line = ft_strdup(s[fd]);
 		ft_strdel(&s[fd]);
 		return (0);
 	}
