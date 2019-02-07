@@ -24,7 +24,7 @@ int		ft_next_line(char *s, char **line, int r, int fd)
 	{
 		*line = ft_strsub(s, 0, i);
 		tmp = ft_strdup(s + i + 1);
-		// ft_strdel(&s);
+		ft_strdel(&s);
 		s = tmp;
 		if (s[0] == '\0')
 			ft_strdel(&s);
@@ -46,7 +46,8 @@ int		get_next_line(const int fd, char **line)
 	char		buff[BUFF_SIZE + 1];
 	char		*tmp;
 	int			r;
-
+	//printf("buff = %s\n", buff);
+//	printf("s = %s\n", s);
 	if (fd < 0 || line == NULL)
 		return (-1);
 	while ((r = read(fd, buff, BUFF_SIZE)) > 0)
@@ -55,7 +56,6 @@ int		get_next_line(const int fd, char **line)
 		if (!(s))
 			s = ft_strnew(1);
 		tmp = ft_strjoin(s, buff);
-	//	printf("%s\n",s);
 		ft_strdel(&s);
 		s = tmp;
 		if (ft_strchr(buff, '\n'))
