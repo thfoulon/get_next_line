@@ -65,21 +65,3 @@ int		get_next_line(const int fd, char **line)
 		return (0);
 	return (ft_next_line(s, line, r, fd));
 }
-
-int		main(int ac, char **av)
-{
-	int		fd;
-	char	*s;
-	int		r;
-
-	if (ac == 2)
-	{
-		fd = open(av[1], O_RDONLY);
-		while ((r = get_next_line(fd, &s)) > 0)
-			printf("%d, %s\n", r, s);
-		printf("%d, %s\n", r, s);
-	}
-	else
-		printf("open(); error\n");
-	return (0);
-}
