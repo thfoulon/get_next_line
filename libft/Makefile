@@ -26,13 +26,13 @@ SRC = ft_strlen.c ft_strdup.c ft_atoi.c ft_strcpy.c ft_strncpy.c ft_strcat.c \
 
 OBJ = $(SRC:.c=.o)
 
-FLAGS = -Wall -Wextra -Werror -c $(SRC) -I.
+FLAGS = -Wall -Wextra -Werror -c $(SRC) -Iincludes
 
 all: $(NAME)
-	
+
 $(NAME):
 	@gcc $(FLAGS)
-		@ar rcs $(NAME) $(OBJ) 
+		@ar rcs $(NAME) $(OBJ)
 
 clean:
 	@rm -f $(OBJ)

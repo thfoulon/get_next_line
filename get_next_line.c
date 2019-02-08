@@ -14,7 +14,7 @@
 
 int		ft_next_line(char **s, char **line, int r, int fd)
 {
-	char	*tmp;
+	char	*str;
 	int		i;
 
 	i = 0;
@@ -23,9 +23,9 @@ int		ft_next_line(char **s, char **line, int r, int fd)
 	if (s[fd][i] == '\n')
 	{
 		*line = ft_strsub(s[fd], 0, i);
-		tmp = ft_strdup(s[fd] + i + 1);
+		str = ft_strdup(s[fd] + i + 1);
 		ft_strdel(&s[fd]);
-		s[fd] = tmp;
+		s[fd] = str;
 		if (s[fd][0] == '\0')
 			ft_strdel(&s[fd]);
 	}
@@ -61,7 +61,7 @@ int		get_next_line(const int fd, char **line)
 	}
 	if (r < 0)
 		return (-1);
-	else if (r == 0 && (s == NULL || s[fd][0] == '\0'))
+	else if (r == 0 && (s[fd] == NULL || s[fd][0] == '\0'))
 		return (0);
 	return (ft_next_line(s, line, r, fd));
 }
