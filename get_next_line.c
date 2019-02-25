@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-int		ft_next_line(char **s, char **line, int r, int fd)
+int		ft_next_line(char **s, char **line, int fd)
 {
 	char	*str;
 	int		i;
@@ -20,7 +20,7 @@ int		ft_next_line(char **s, char **line, int r, int fd)
 	i = 0;
 	while (s[fd][i] != '\n' && s[fd][i] != '\0')
 		i++;
-	if (s[fd][i] == '\n')
+	if (s[fd][i] == '\n' || s[fd][0] != EOF)
 	{
 		*line = ft_strsub(s[fd], 0, i);
 		str = ft_strdup(s[fd] + i + 1);
@@ -30,12 +30,7 @@ int		ft_next_line(char **s, char **line, int r, int fd)
 			ft_strdel(&s[fd]);
 	}
 	else if (s[fd][i] == '\0')
-	{
-		if (r == BUFF_SIZE)
-			return (get_next_line(fd, line));
-		ft_strdel(&s[fd]);
 		return (0);
-	}
 	return (1);
 }
 
@@ -63,5 +58,5 @@ int		get_next_line(const int fd, char **line)
 		return (-1);
 	else if (r == 0 && (s[fd] == NULL || s[fd][0] == '\0'))
 		return (0);
-	return (ft_next_line(s, line, r, fd));
+	return (ft_next_line(s, line, fd));
 }
