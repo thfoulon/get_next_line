@@ -20,7 +20,7 @@ int		ft_next_line(char **s, char **line, int fd)
 	i = 0;
 	while (s[fd][i] != '\n' && s[fd][i] != '\0')
 		i++;
-	if (s[fd][i] == '\n' || s[fd][0] != EOF)
+	if (s[fd][i] == '\n' || s[fd][0] != '\0')
 	{
 		*line = ft_strsub(s[fd], 0, i);
 		str = ft_strdup(s[fd] + i + 1);
@@ -36,7 +36,7 @@ int		ft_next_line(char **s, char **line, int fd)
 
 int		get_next_line(const int fd, char **line)
 {
-	static char	*s[1024];
+	static char	*s[512];
 	char		buff[BUFF_SIZE + 1];
 	char		*tmp;
 	int			r;

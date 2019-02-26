@@ -12,6 +12,7 @@ int		main(int ac, char **av)
 		while ((r = get_next_line(fd, &s)) > 0)
 			printf("%d, %s\n", r, s);
 		printf("%d, %s\n", r, s);
+		close(fd);
 	}
 	else
 		printf("open(); error\n");
